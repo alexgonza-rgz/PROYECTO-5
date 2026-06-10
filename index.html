@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Facturas</title>
+    <link rel="icon" type="image/svg+xml" href="img/factura.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="img/factura.svg" alt="Icono factura" class="icono-header">
+        <div>
+            <h1>Simulador de Facturas</h1>
+            <p>Proyecto 5 - Informática Industrial</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="tarjeta">
+            <h2>Datos de la factura</h2>
+
+            <form id="formFactura">
+                <div class="campo">
+                    <label for="cliente">Cliente</label>
+                    <input type="text" id="cliente" placeholder="Nombre del cliente" required>
+                </div>
+
+                <div class="campo">
+                    <label for="importe">Importe base (€)</label>
+                    <input type="number" id="importe" min="0" step="0.01" placeholder="Ejemplo: 250" required>
+                </div>
+
+                <div class="campo">
+                    <label for="iva">IVA (%)</label>
+                    <input type="number" id="iva" min="0" step="0.01" value="21" required>
+                </div>
+
+                <div class="botones">
+                    <button type="submit">Calcular factura</button>
+                    <button type="button" id="btnExportar">Exportar CSV</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="tarjeta resumen">
+            <h2>Resumen</h2>
+            <img src="img/calculadora.svg" alt="Icono calculadora" class="imagen-resumen">
+            <p id="mensaje">Introduce los datos y pulsa calcular.</p>
+            <p class="nota">Descuento automático: 10% si el importe base supera 1000 €.</p>
+        </section>
+
+        <section class="tarjeta tabla-contenedor">
+            <h2>Facturas generadas</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Base (€)</th>
+                        <th>IVA (%)</th>
+                        <th>IVA (€)</th>
+                        <th>Descuento (€)</th>
+                        <th>Total (€)</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTabla">
+                    <!-- Las filas se generan dinámicamente con innerHTML desde JavaScript -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
